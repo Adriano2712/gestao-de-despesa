@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .btn-add-expense, .btn-clear-expenses, .btn-update-salary {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-add-expense {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .btn-clear-expenses {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-update-salary {
+    background-color: #007bff;
+    color: white;
+  }
+  
