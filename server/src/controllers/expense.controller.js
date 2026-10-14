@@ -1,5 +1,6 @@
 import { prisma } from '../config/prisma.js';
 import { HttpError } from '../middleware/errorHandler.js';
+import { materializeRecurringExpenses } from '../services/recurringExpense.service.js';
 
 async function assertOwnedCategory(userId, categoryId) {
   if (!categoryId) return;
@@ -34,6 +35,10 @@ function monthRange(month) {
 
 export async function listExpenses(req, res) {
   const { month, categoryId } = req.query;
+
+  if (month) {
+    await materializeRecurringExpenses(req.userId, month);
+  }
 
   const expenses = await prisma.expense.findMany({
     where: {

@@ -7,11 +7,13 @@ import {
   updateExpenseRequest,
   deleteExpenseRequest,
 } from '../api/expenses';
+import { listBudgetsRequest } from '../api/budgets';
 import { extractErrorMessage } from '../api/client';
 import { formatCurrency } from '../utils/formatCurrency';
 import ExpenseChart from '../components/ExpenseChart';
 import ExpenseForm from '../components/ExpenseForm';
 import ExpenseList from '../components/ExpenseList';
+import BudgetProgressList from '../components/BudgetProgressList';
 
 function currentMonth() {
   return new Date().toISOString().slice(0, 7);
@@ -22,6 +24,7 @@ function DashboardPage() {
   const [month, setMonth] = useState(currentMonth());
   const [categories, setCategories] = useState([]);
   const [expenses, setExpenses] = useState([]);
+  const [budgets, setBudgets] = useState([]);
   const [editingExpense, setEditingExpense] = useState(null);
   const [newSalary, setNewSalary] = useState('');
   const [error, setError] = useState('');
@@ -37,6 +40,7 @@ function DashboardPage() {
 
   useEffect(() => {
     listCategoriesRequest().then(setCategories).catch((err) => setError(extractErrorMessage(err)));
+    listBudgetsRequest().then(setBudgets).catch((err) => setError(extractErrorMessage(err)));
   }, []);
 
   useEffect(() => {
@@ -125,6 +129,7 @@ function DashboardPage() {
       />
 
       <ExpenseChart expenses={expenses} salary={user.salary} />
+      <BudgetProgressList expenses={expenses} budgets={budgets} />
       <ExpenseList expenses={expenses} onEdit={setEditingExpense} onDelete={handleDelete} />
     </div>
   );

@@ -24,6 +24,12 @@ function Navbar() {
         <NavLink to="/categorias" className={navLinkClass}>
           Categorias
         </NavLink>
+        <NavLink to="/recorrencias" className={navLinkClass}>
+          Recorrências
+        </NavLink>
+        <NavLink to="/orcamento" className={navLinkClass}>
+          Orçamento
+        </NavLink>
       </div>
       <div className="navbar-user">
         <span>{user?.name}</span>

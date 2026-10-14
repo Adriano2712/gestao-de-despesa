@@ -5,6 +5,8 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import CategoriesPage from './pages/CategoriesPage';
+import RecurringExpensesPage from './pages/RecurringExpensesPage';
+import BudgetsPage from './pages/BudgetsPage';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route element={<ProtectedRoute />}>
             <Route path="/" element={<DashboardPage />} />
             <Route path="/categorias" element={<CategoriesPage />} />
+            <Route path="/recorrencias" element={<RecurringExpensesPage />} />
+            <Route path="/orcamento" element={<BudgetsPage />} />
           </Route>
         </Routes>
       </AuthProvider>

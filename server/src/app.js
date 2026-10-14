@@ -5,6 +5,8 @@ import { env } from './config/env.js';
 import { authRouter } from './routes/auth.routes.js';
 import { categoryRouter } from './routes/category.routes.js';
 import { expenseRouter } from './routes/expense.routes.js';
+import { recurringExpenseRouter } from './routes/recurringExpense.routes.js';
+import { budgetRouter } from './routes/budget.routes.js';
 import { notFoundHandler, errorHandler } from './middleware/errorHandler.js';
 
 export const app = express();
@@ -18,6 +20,8 @@ app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 app.use('/api/auth', authRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/expenses', expenseRouter);
+app.use('/api/recurring-expenses', recurringExpenseRouter);
+app.use('/api/budgets', budgetRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
