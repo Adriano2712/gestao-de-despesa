@@ -40,4 +40,136 @@
     background-color: #007bff;
     color: white;
   }
-  
+
+  .btn-edit-expense, .btn-delete-expense {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+  }
+
+  .btn-edit-expense {
+    background-color: #ffc107;
+  }
+
+  .btn-delete-expense {
+    background-color: #dc3545;
+  }
+
+  .btn-logout {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #6c757d;
+    color: white;
+  }
+
+  .loading-screen {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 18px;
+  }
+
+  /* Navbar */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background-color: #212529;
+    color: white;
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+  }
+
+  .navbar-links {
+    display: flex;
+    gap: 16px;
+  }
+
+  .navbar-links a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Auth pages */
+  .auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 320px;
+    padding: 24px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+
+  .auth-form input {
+    padding: 8px;
+    font-size: 16px;
+  }
+
+  .auth-error {
+    color: #dc3545;
+    font-weight: 500;
+  }
+
+  /* Expense list */
+  .expense-list {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+
+  .expense-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 4px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .expense-category-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .expense-title {
+    flex: 1;
+  }
+
+  .expense-date {
+    color: #6c757d;
+    font-size: 14px;
+  }
+
+  .expense-amount {
+    font-weight: 600;
+    min-width: 100px;
+    text-align: right;
+  }
+
+  .expense-actions {
+    display: flex;
+    gap: 6px;
+  }
