@@ -3,12 +3,14 @@ import { prisma } from '../config/prisma.js';
 import { signToken } from '../utils/jwt.js';
 import { HttpError } from '../middleware/errorHandler.js';
 
+// Cores validadas pela skill de dataviz (CVD-safe, ver scripts/validate_palette.js).
+// "Outros" usa o tom neutro de "de-emphasis" em vez de uma cor categórica.
 const DEFAULT_CATEGORIES = [
-  { name: 'Alimentação', color: '#fd7e14' },
-  { name: 'Transporte', color: '#0d6efd' },
-  { name: 'Moradia', color: '#6610f2' },
-  { name: 'Lazer', color: '#20c997' },
-  { name: 'Outros', color: '#6c757d' },
+  { name: 'Alimentação', color: '#eb6834' },
+  { name: 'Transporte', color: '#2a78d6' },
+  { name: 'Moradia', color: '#e87ba4' },
+  { name: 'Lazer', color: '#1baf7a' },
+  { name: 'Outros', color: '#898781' },
 ];
 
 function toPublicUser(user) {

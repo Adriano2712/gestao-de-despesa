@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/useAuth';
 import { extractErrorMessage } from '../api/client';
 
 function LoginPage() {
@@ -34,23 +34,29 @@ function LoginPage() {
       <form onSubmit={handleSubmit} className="auth-form">
         <h1>Entrar</h1>
         {error && <p className="auth-error">{error}</p>}
-        <input
-          type="email"
-          name="email"
-          placeholder="E-mail"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Senha"
-          value={form.password}
-          onChange={handleChange}
-          required
-        />
-        <button type="submit" disabled={submitting} className="btn-add-expense">
+        <div className="field">
+          <label htmlFor="login-email">E-mail</label>
+          <input
+            id="login-email"
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="login-password">Senha</label>
+          <input
+            id="login-password"
+            type="password"
+            name="password"
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit" disabled={submitting} className="btn btn-primary">
           {submitting ? 'Entrando...' : 'Entrar'}
         </button>
         <p>

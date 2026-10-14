@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../context/useAuth';
 import { listCategoriesRequest } from '../api/categories';
 import {
   listExpensesRequest,
@@ -8,6 +8,7 @@ import {
   deleteExpenseRequest,
 } from '../api/expenses';
 import { extractErrorMessage } from '../api/client';
+import { formatCurrency } from '../utils/formatCurrency';
 import ExpenseChart from '../components/ExpenseChart';
 import ExpenseForm from '../components/ExpenseForm';
 import ExpenseList from '../components/ExpenseList';
@@ -81,30 +82,40 @@ function DashboardPage() {
 
   return (
     <div className="container">
-      <h1>Olá, {user.name}</h1>
+      <div className="page-header">
+        <h1>Olá, {user.name}</h1>
+        <p>Acompanhe seus gastos e mantenha o orçamento do mês sob controle.</p>
+      </div>
       {error && <p className="auth-error">{error}</p>}
 
-      <div className="input-group">
-        <label htmlFor="month-filter">Mês</label>
-        <input
-          id="month-filter"
-          type="month"
-          value={month}
-          onChange={(e) => setMonth(e.target.value)}
-        />
+      <div className="card">
+        <div className="input-group">
+          <div className="field" style={{ flex: '0 0 auto' }}>
+            <label htmlFor="month-filter">Mês</label>
+            <input
+              id="month-filter"
+              type="month"
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+            />
+          </div>
+          <form onSubmit={handleUpdateSalary} className="field" style={{ flexDirection: 'row', alignItems: 'end', gap: 'var(--space-2)' }}>
+            <div className="field">
+              <label htmlFor="salary-input">Salário mensal</label>
+              <input
+                id="salary-input"
+                type="number"
+                placeholder={formatCurrency(user.salary)}
+                value={newSalary}
+                onChange={(e) => setNewSalary(e.target.value)}
+              />
+            </div>
+            <button type="submit" className="btn btn-accent">
+              <i className="fas fa-save"></i> Salvar
+            </button>
+          </form>
+        </div>
       </div>
-
-      <form onSubmit={handleUpdateSalary} className="input-group">
-        <input
-          type="number"
-          placeholder={`Salário atual: R$ ${user.salary.toFixed(2)}`}
-          value={newSalary}
-          onChange={(e) => setNewSalary(e.target.value)}
-        />
-        <button type="submit" className="btn-update-salary">
-          <i className="fas fa-save"></i> Atualizar Salário
-        </button>
-      </form>
 
       <ExpenseForm
         categories={categories}

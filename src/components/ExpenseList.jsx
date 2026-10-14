@@ -3,15 +3,19 @@ import ExpenseItem from './ExpenseItem';
 
 function ExpenseList({ expenses, onEdit, onDelete }) {
   return (
-    <div className="expense-list">
-      <h3>Despesas Detalhadas</h3>
-      {expenses.length === 0 ? (
-        <p>Nenhuma despesa cadastrada neste mês.</p>
-      ) : (
-        expenses.map((expense) => (
-          <ExpenseItem key={expense.id} expense={expense} onEdit={onEdit} onDelete={onDelete} />
-        ))
-      )}
+    <div className="card">
+      <div className="expense-list-header">
+        <span className="card-title">Despesas detalhadas</span>
+      </div>
+      <div className="expense-list">
+        {expenses.length === 0 ? (
+          <p className="chart-empty">Nenhuma despesa cadastrada neste mês.</p>
+        ) : (
+          expenses.map((expense) => (
+            <ExpenseItem key={expense.id} expense={expense} onEdit={onEdit} onDelete={onDelete} />
+          ))
+        )}
+      </div>
     </div>
   );
 }

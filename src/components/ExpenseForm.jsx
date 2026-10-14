@@ -42,38 +42,61 @@ function ExpenseForm({ categories, initialValues = null, onSubmit, onCancel = nu
   };
 
   return (
-    <form onSubmit={handleSubmit} className="input-group">
-      <input
-        type="text"
-        name="title"
-        placeholder="Título da despesa"
-        value={form.title}
-        onChange={handleChange}
-      />
-      <input
-        type="number"
-        name="amount"
-        placeholder="Valor"
-        min="0.01"
-        step="0.01"
-        value={form.amount}
-        onChange={handleChange}
-      />
-      <input type="date" name="date" value={form.date} onChange={handleChange} />
-      <select name="categoryId" value={form.categoryId} onChange={handleChange}>
-        <option value="">Sem categoria</option>
-        {categories.map((category) => (
-          <option key={category.id} value={category.id}>
-            {category.name}
-          </option>
-        ))}
-      </select>
+    <form onSubmit={handleSubmit} className="card">
+      <span className="card-title">{initialValues ? 'Editar despesa' : 'Nova despesa'}</span>
+      <div className="input-group">
+        <div className="field">
+          <label htmlFor="expense-title">Título</label>
+          <input
+            id="expense-title"
+            type="text"
+            name="title"
+            placeholder="Ex: Mercado"
+            value={form.title}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="expense-amount">Valor</label>
+          <input
+            id="expense-amount"
+            type="number"
+            name="amount"
+            placeholder="0,00"
+            min="0.01"
+            step="0.01"
+            value={form.amount}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="expense-date">Data</label>
+          <input
+            id="expense-date"
+            type="date"
+            name="date"
+            value={form.date}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="field">
+          <label htmlFor="expense-category">Categoria</label>
+          <select id="expense-category" name="categoryId" value={form.categoryId} onChange={handleChange}>
+            <option value="">Sem categoria</option>
+            {categories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
       <div className="button-group">
-        <button type="submit" className="btn-add-expense">
-          <i className="fas fa-plus"></i> {initialValues ? 'Salvar' : 'Adicionar Despesa'}
+        <button type="submit" className="btn btn-primary">
+          <i className="fas fa-plus"></i> {initialValues ? 'Salvar' : 'Adicionar despesa'}
         </button>
         {onCancel && (
-          <button type="button" onClick={onCancel} className="btn-clear-expenses">
+          <button type="button" onClick={onCancel} className="btn btn-secondary">
             Cancelar
           </button>
         )}

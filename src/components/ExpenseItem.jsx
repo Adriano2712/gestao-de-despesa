@@ -13,12 +13,12 @@ function ExpenseItem({ expense, onEdit, onDelete }) {
       <span className="expense-date">{new Date(expense.date).toLocaleDateString('pt-BR')}</span>
       <span className="expense-amount">{formatCurrency(expense.amount)}</span>
       <div className="expense-actions">
-        <button onClick={() => onEdit(expense)} className="btn-edit-expense" title="Editar">
+        <button onClick={() => onEdit(expense)} className="btn btn-warning btn-icon" title="Editar">
           <i className="fas fa-pen"></i>
         </button>
         <button
           onClick={() => onDelete(expense.id)}
-          className="btn-delete-expense"
+          className="btn btn-danger btn-icon"
           title="Excluir"
         >
           <i className="fas fa-trash-alt"></i>
