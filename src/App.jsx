@@ -7,6 +7,7 @@ import DashboardPage from './pages/DashboardPage';
 import CategoriesPage from './pages/CategoriesPage';
 import RecurringExpensesPage from './pages/RecurringExpensesPage';
 import BudgetsPage from './pages/BudgetsPage';
+import ReportsPage from './pages/ReportsPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/categorias" element={<CategoriesPage />} />
             <Route path="/recorrencias" element={<RecurringExpensesPage />} />
             <Route path="/orcamento" element={<BudgetsPage />} />
+            <Route path="/relatorios" element={<ReportsPage />} />
           </Route>
         </Routes>
       </AuthProvider>
